@@ -6,6 +6,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lauryne Combes | Portfolio</title>
 
+/* ANIMATIONS DIGITAL GREEN */
+
+.hero {
+  isolation: isolate;
+}
+
+.hero::before {
+  animation: gridMove 25s linear infinite;
+  opacity: 0.65;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #39e98525 0%,
+    #39e98510 40%,
+    transparent 70%
+  );
+  filter: blur(35px);
+  animation: haloMove 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.hero-content {
+  z-index: 2;
+  animation: appear 1.4s ease both;
+}
+
+.tag {
+  box-shadow: 0 0 20px #79e6a722;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 55px 55px; }
+}
+
+@keyframes haloMove {
+  from { transform: translate(-120px, -40px); }
+  to { transform: translate(120px, 50px); }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero::after,
+  .hero-content {
+    animation: none;
+  }
+}
+
 <style>
 :root {
   --bg: #090d0b;
